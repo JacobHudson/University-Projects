@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Dots Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0; /* Default background */
+            overflow: hidden;
+            position: relative;
+            transition: background-color 0.3s; /* Smooth transition for background */
+        }
+
+        /* Background colors for the body based on dot hover */
+        .dot:hover ~ body {
+            background: linear-gradient(90deg, #d0e1f9, #f0f0f0); /* Background changes when a dot is hovered */
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            transition: background-color 0.3s, transform 0.3s; /* Add transitions */
+        }
+
+        /* Different colors for each dot */
+        .dot:nth-child(1) { background-color: blue; }
+        .dot:nth-child(2) { background-color: red; }
+        .dot:nth-child(3) { background-color: green; }
+        .dot:nth-child(4) { background-color: orange; }
+        .dot:nth-child(5) { background-color: purple; }
+
+        @keyframes move1 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(100px, 50px); }
+            50% { transform: translate(50px, 150px); }
+            75% { transform: translate(25px, 200px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move2 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(200px, 75px); }
+            50% { transform: translate(100px, 50px); }
+            75% { transform: translate(150px, 100px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move3 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, 100px); }
+            50% { transform: translate(100px, 200px); }
+            75% { transform: translate(150px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move4 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(75px, 125px); }
+            50% { transform: translate(150px, 175px); }
+            75% { transform: translate(50px, 200px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move5 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(125px, 25px); }
+            50% { transform: translate(75px, 100px); }
+            75% { transform: translate(100px, 150px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Define the animation for each dot */
+        .dot:nth-child(1) {
+            animation: move1 5s linear infinite;
+        }
+        .dot:nth-child(2) {
+            animation: move2 7s linear infinite;
+        }
+        .dot:nth-child(3) {
+            animation: move3 6s linear infinite;
+        }
+        .dot:nth-child(4) {
+            animation: move4 8s linear infinite;
+        }
+        .dot:nth-child(5) {
+            animation: move5 9s linear infinite;
+        }
+
+        /* Change style on hover */
+        .dot:hover {
+            background-color: yellow; /* Change color on hover */
+            transform: scale(1.5); /* Increase size on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dot" style="top: 50px; left: 50px;"></div>
+    <div class="dot" style="top: 100px; left: 150px;"></div>
+    <div class="dot" style="top: 200px; left: 300px;"></div>
+    <div class="dot" style="top: 300px; left: 100px;"></div>
+    <div class="dot" style="top: 400px; left: 200px;"></div>
+
+</body>
+</html>
