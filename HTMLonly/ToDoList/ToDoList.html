@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal To-Do List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+
+            font-family: 'Roboto', sans-serif;
+
+            background-color: #f2f0e6;
+            /* Light cream background */
+
+            color: #4b3c2c;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+            margin: 0;
+
+            padding: 20px;
+
+            background-image: linear-gradient(to right, #f2f0e6, #e5d1b3);
+            /* Subtle gradient */
+
+            overflow: hidden;
+            /* Hide scrollbar for background animation */
+
+        }
+
+        .container {
+
+            background: #fff;
+            /* White background for the container */
+
+            border-radius: 15px;
+
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+
+            padding: 30px;
+
+            width: 350px;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+            /* Hide overflow for background animation */
+
+        }
+
+        h1 {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 2.5em;
+
+            margin-bottom: 20px;
+
+            color: #6d4c41;
+            /* Rich brown color */
+
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+        }
+
+        input[type="text"],
+        input[type="date"] {
+
+            width: calc(100% - 20px);
+
+            padding: 10px;
+
+            border: 2px solid #d7b2c9;
+
+            border-radius: 5px;
+
+            font-size: 1em;
+
+            margin-bottom: 10px;
+
+            transition: border-color 0.3s;
+
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+
+            border-color: #ab7c9c;
+            /* Focused border color */
+
+            outline: none;
+
+            box-shadow: 0 0 5px rgba(171, 124, 156, 0.5);
+
+        }
+
+        button {
+
+            background: linear-gradient(to right, #ab7c9c, #d7b2c9);
+            /* Gradient for button */
+
+            color: #fff;
+
+            border: none;
+
+            border-radius: 5px;
+
+            padding: 10px 15px;
+
+            font-size: 1.1em;
+
+            cursor: pointer;
+
+            transition: background-color 0.3s, transform 0.2s;
+
+            font-weight: 700;
+            /* Bold font for button */
+
+        }
+
+        button:hover {
+
+            background: linear-gradient(to right, #d7b2c9, #ab7c9c);
+            /* Reverse gradient on hover */
+
+            transform: scale(1.05);
+            /* Slightly grow on hover */
+
+        }
+
+        ul {
+
+            list-style-type: none;
+
+            padding: 0;
+
+            text-align: left;
+
+            margin: 20px 0;
+
+            max-height: 300px;
+            /* Limit height for scrolling */
+
+            overflow-y: auto;
+            /* Enable scrolling */
+
+            scrollbar-width: thin;
+            /* For Firefox */
+
+        }
+
+        /* Custom scrollbar for Webkit browsers */
+
+        ul::-webkit-scrollbar {
+
+            width: 8px;
+
+        }
+
+        ul::-webkit-scrollbar-track {
+
+            background: #f0e6f7;
+            /* Track color */
+
+        }
+
+        ul::-webkit-scrollbar-thumb {
+
+            background: #d7b2c9;
+            /* Thumb color */
+
+            border-radius: 10px;
+            /* Round the corners */
+
+        }
+
+        li {
+
+            padding: 15px;
+
+            background: linear-gradient(to right, #f0e6f7, #e5d1b3);
+            /* Gradient background for tasks */
+
+            border: 1px solid #d7b2c9;
+
+            border-radius: 10px;
+
+            margin-bottom: 10px;
+
+            position: relative;
+
+            cursor: move;
+            /* Cursor style for dragging */
+
+            transition: background-color 0.3s;
+            /* Smooth transition */
+
+        }
+
+        li:hover {
+
+            background-color: #e8d1c7;
+            /* Darker shade on hover */
+
+        }
+
+        li.completed {
+
+            text-decoration: line-through;
+            /* Strikethrough for completed tasks */
+
+            background-color: #c8e6c9;
+            /* Light green for completed tasks */
+
+        }
+
+        .delete-btn {
+
+            position: absolute;
+
+            right: 10px;
+
+            top: 10px;
+
+            background: none;
+
+            border: none;
+
+            color: #d9534f;
+
+            cursor: pointer;
+
+            font-size: 1.2em;
+
+            transition: color 0.3s;
+
+        }
+
+        .delete-btn:hover {
+
+            color: #a52a2a;
+            /* Darker red on hover */
+
+        }
+
+        .task-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        .date-label {
+
+            font-size: 0.9em;
+
+            color: #6d4c41;
+            /* Rich brown color */
+
+            margin-left: 10px;
+
+            font-style: italic;
+            /* Italic for date */
+
+        }
+
+        /* Tooltip styles */
+
+        .tooltip {
+
+            position: absolute;
+
+            background-color: #555;
+
+            color: #fff;
+
+            text-align: center;
+
+            border-radius: 6px;
+
+            padding: 5px 10px;
+
+            z-index: 1;
+
+            bottom: 125%;
+            /* Position above the button */
+
+            left: 50%;
+
+            transform: translateX(-50%);
+            /* Center the tooltip */
+
+            opacity: 0;
+            /* Start hidden */
+
+            transition: opacity 0.3s;
+
+            visibility: hidden;
+            /* Start hidden */
+
+        }
+
+        .delete-btn:hover .tooltip {
+
+            visibility: visible;
+            /* Show tooltip on hover */
+
+            opacity: 1;
+            /* Fade in tooltip */
+
+        }
+
+        /* Tooltip arrow */
+
+        .tooltip::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 100%;
+            /* At the bottom of the tooltip */
+
+            left: 50%;
+
+            margin-left: -5px;
+
+            border-width: 5px;
+
+            border-style: solid;
+
+            border-color: #555 transparent transparent transparent;
+            /* Arrow */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Royal To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Add your royal task here...">
+        <input type="date" id="dateInput">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+
+        // Set minimum and maximum date inputs
+
+        const dateInput = document.getElementById('dateInput');
+
+        const today = new Date();
+
+        const maxDate = new Date();
+
+        maxDate.setFullYear(today.getFullYear() + 10);
+
+        // Format dates to YYYY-MM-DD
+
+        const formatDate = (date) => date.toISOString().split('T')[0];
+
+        // Set the minimum and maximum attributes
+
+        dateInput.setAttribute('min', formatDate(today));
+
+        dateInput.setAttribute('max', formatDate(maxDate));
+
+        function addTask() {
+
+            const taskInput = document.getElementById('taskInput');
+
+            const taskText = taskInput.value.trim();
+
+            const taskDate = dateInput.value;
+
+            if (taskText && taskDate) {
+
+                const taskList = document.getElementById('taskList');
+
+                const li = document.createElement('li');
+
+                li.setAttribute('draggable', 'true'); // Enable dragging
+
+                li.innerHTML = `
+<div class="task-info">
+<span>${taskText}</span>
+<span class="date-label">${new Date(taskDate).toLocaleDateString()}</span>
+</div>
+
+                `;
+
+                const deleteBtn = document.createElement('button');
+
+                deleteBtn.textContent = '✖';
+
+                deleteBtn.classList.add('delete-btn');
+
+                deleteBtn.onclick = function () {
+
+                    taskList.removeChild(li);
+
+                };
+
+                const tooltip = document.createElement('span');
+
+                tooltip.classList.add('tooltip');
+
+                tooltip.textContent = "Delete Task"; // Tooltip text
+
+                deleteBtn.appendChild(tooltip);
+
+                li.appendChild(deleteBtn);
+
+                taskList.appendChild(li);
+
+                // Clear inputs after adding
+
+                taskInput.value = '';
+
+                dateInput.value = '';
+
+                // Add drag-and-drop functionality
+
+                li.addEventListener('dragstart', handleDragStart);
+
+                li.addEventListener('dragover', handleDragOver);
+
+                li.addEventListener('drop', handleDrop);
+
+                // Add click event for marking task as completed
+
+                li.onclick = function () {
+
+                    li.classList.toggle('completed');
+
+                };
+
+            } else {
+
+                alert('Please enter a task and a due date fit for royalty!');
+
+            }
+
+        }
+
+        let draggedItem = null;
+
+        function handleDragStart(event) {
+
+            draggedItem = event.target;
+
+            event.dataTransfer.effectAllowed = 'move';
+
+        }
+
+        function handleDragOver(event) {
+
+            event.preventDefault();
+
+            event.dataTransfer.dropEffect = 'move';
+
+        }
+
+        function handleDrop(event) {
+
+            event.preventDefault();
+
+            if (event.target.tagName === 'LI' && event.target !== draggedItem) {
+
+                const taskList = document.getElementById('taskList');
+
+                const items = Array.from(taskList.children);
+
+                const draggedIndex = items.indexOf(draggedItem);
+
+                const targetIndex = items.indexOf(event.target);
+
+                if (draggedIndex < targetIndex) {
+
+                    taskList.insertBefore(draggedItem, event.target.nextSibling);
+
+                } else {
+
+                    taskList.insertBefore(draggedItem, event.target);
+
+                }
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
