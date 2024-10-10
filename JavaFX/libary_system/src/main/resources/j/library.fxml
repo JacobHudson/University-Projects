@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="j.Controller">
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextField fx:id="titleField" promptText="Title"/>
+            <TextField fx:id="authorField" promptText="Author"/>
+            <TextField fx:id="isbnField" promptText="ISBN"/>
+            <Button text="Add Book" onAction="#addBook"/>
+        </HBox>
+    </top>
+    <center>
+        <TableView fx:id="tableView">
+            <columns>
+                <TableColumn text="ID" fx:id="idColumn" prefWidth="50"/>
+                <TableColumn text="Title" fx:id="titleColumn" prefWidth="200"/>
+                <TableColumn text="Author" fx:id="authorColumn" prefWidth="150"/>
+                <TableColumn text="ISBN" fx:id="isbnColumn" prefWidth="100"/>
+                <TableColumn text="Available" fx:id="availableColumn" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Check Out" onAction="#checkOutBook"/>
+            <Button text="Check In" onAction="#checkInBook"/>
+        </HBox>
+    </bottom>
+</BorderPane>
