@@ -1,14 +1,21 @@
-name = "Jacob"
-age = 18
-
-print("Name", name)
-print("Age", age)
-
-print(type(name))
-print(type(age))
-
-f = 1.0 + 0.000000000000001
-print(f)
-
-f = 1.0 + 0.0000000000000001
-print(f)
+s = "python programming".upper()
+s = "Hello World".startswith("Hello")
+s = "Banana".replace('a','@')
+s = "PYTHON IS FUN".lower()
+s = "hello".find('e')
+s = "Learn Python Fast".split()
+s = " Hello, Python! ".strip()
+s = "This is a simple string.".count('i')
+s = "apple123".isalnum()
+s = " ".join(['Python', 'is', 'cool'])
+s = "data science is interesting".count("data")
+s = "This is a test".replace("is", "was")
+s = "12345".isdigit()
+s = "python".capitalize()
+s = "hello"[::-1]
+s = int("12345")
+s = len("Python programming")
+s = "PYTHON".isupper()
+s = "Hello World".replace(' ', '-')
+s = "abcdef".islower()
+s = str(12) 
