@@ -1,0 +1,9 @@
+Manchester 37
+Portsmouth 9
+London 5
+Southampton 12
+Leeds 20
+Cardiff 42
+Birmingham 34
+Edinburgh 26
+Newcastle 11

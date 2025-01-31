@@ -1,0 +1,67 @@
+﻿Alice, 45.33% 
+Bob, 93.33% 
+Charlie, 32.0% 
+David, 81.33% 
+Emma, 22.67% 
+Fiona, 73.33% 
+George, 28.0% 
+Hannah, 26.67% 
+Ian, 98.67% 
+Julia, 98.67% 
+Kevin, 29.33% 
+Laura, 33.33% 
+Michael, 66.67% 
+Natalie, 20.0% 
+Oliver, 44.0% 
+Paula, 90.67% 
+Quentin, 53.33% 
+Rachel, 36.0% 
+Samuel, 60.0% 
+Tina, 20.0% 
+Ursula, 2.67% 
+Victor, 58.67% 
+Wendy, 5.33% 
+Xavier, 24.0% 
+Yolanda, 70.67% 
+Zachary, 6.67% 
+Amber, 16.0% 
+Brian, 90.67% 
+Chloe, 24.0% 
+Derek, 1.33% 
+Ellie, 66.67% 
+Frank, 78.67% 
+Grace, 16.0% 
+Harry, 30.67% 
+Isabella, 8.0% 
+Jack, 29.33% 
+Katie, 72.0% 
+Liam, 89.33% 
+Megan, 0.0% 
+Nathan, 86.67% 
+Olivia, 32.0% 
+Peter, 78.67% 
+Quinn, 73.33% 
+Rebecca, 57.33% 
+Simon, 44.0% 
+Tara, 34.67% 
+Ulysses, 68.0% 
+Violet, 80.0% 
+William, 58.67% 
+Zoe, 38.67% 
+
+Highest Mark: Ian 
+ Mark: 74 Percent: 98.67%
+Lowest Mark: Megan 
+ Mark: 0 Percent: 0.0%
+
+Range of Marks:0 - 74
+Range of Percent:0.0% - 98.67%
+
+Average Mark: 35.94
+
+'A' count: 9
+'B' count: 6
+'C' count: 4
+'D' count: 4
+'E' count: 3
+Fail ('F') count: 24

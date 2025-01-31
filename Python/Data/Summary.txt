@@ -1,0 +1,8 @@
+strength training: 61.333333333333336 
+running (indoor): 42.5 
+running (outdoor): 71.33333333333333 
+swimming (pool): 67.66666666666667 
+swimming (outdoor): 79.0 
+gym: 53.0 
+zumba: 44.0 
+spin class: 52.0 
